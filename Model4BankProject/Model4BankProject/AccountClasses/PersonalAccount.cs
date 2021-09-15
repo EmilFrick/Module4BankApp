@@ -8,6 +8,13 @@ namespace Model4BankProject
 {
     public sealed class PersonalAccount : Account
     {
+
+        public PersonalAccount(AccountClasses.AccountNumber accountNumber, double balance)
+        : base(accountNumber, balance)
+        {
+
+        }
+
         public override double CalculateInterest()
         {
             throw new NotImplementedException();

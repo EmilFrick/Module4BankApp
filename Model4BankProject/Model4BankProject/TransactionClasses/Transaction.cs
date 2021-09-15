@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model4BankProject
+namespace Model4BankProject.TransactionClasses
 {
     class Transaction
     {

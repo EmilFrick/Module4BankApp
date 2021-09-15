@@ -1,0 +1,13 @@
+C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\BankApp\Model4BankProject\Model4BankProject\obj\Debug\Model4BankProject.csproj.AssemblyReference.cache
+C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\BankApp\Model4BankProject\Model4BankProject\obj\Debug\Model4BankProject.LogIn.resources
+C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\BankApp\Model4BankProject\Model4BankProject\obj\Debug\Model4BankProject.Properties.Resources.resources
+C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\BankApp\Model4BankProject\Model4BankProject\obj\Debug\Model4BankProject.csproj.GenerateResource.cache
+C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\BankApp\Model4BankProject\Model4BankProject\obj\Debug\Model4BankProject.csproj.CoreCompileInputs.cache
+C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\BankApp\Model4BankProject\Model4BankProject\bin\Debug\Model4BankProject.exe.config
+C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\BankApp\Model4BankProject\Model4BankProject\bin\Debug\Model4BankProject.exe
+C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\BankApp\Model4BankProject\Model4BankProject\bin\Debug\Model4BankProject.pdb
+C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\BankApp\Model4BankProject\Model4BankProject\bin\Debug\Newtonsoft.Json.dll
+C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\BankApp\Model4BankProject\Model4BankProject\bin\Debug\Newtonsoft.Json.xml
+C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\BankApp\Model4BankProject\Model4BankProject\obj\Debug\Model4BankProject.csproj.CopyComplete
+C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\BankApp\Model4BankProject\Model4BankProject\obj\Debug\Model4BankProject.exe
+C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\BankApp\Model4BankProject\Model4BankProject\obj\Debug\Model4BankProject.pdb

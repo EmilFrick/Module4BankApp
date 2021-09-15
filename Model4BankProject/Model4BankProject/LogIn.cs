@@ -7,14 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Model4BankProject.AccountClasses;
 
 namespace Model4BankProject
 {
-    public partial class Form1 : Form
+    public partial class LogIn : Form
     {
-        public Form1()
+        public LogIn()
         {
             InitializeComponent();
+        }
+
+        private void btnLogInUser_Click(object sender, EventArgs e)
+        {
+
+            new AccountRepository();
+
         }
     }
 }

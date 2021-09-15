@@ -1,7 +1,7 @@
 ﻿
 namespace Model4BankProject
 {
-    partial class Form1
+    partial class LogIn
     {
         /// <summary>
         /// Required designer variable.
@@ -29,20 +29,34 @@ namespace Model4BankProject
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnLogInUser = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // Form1
+            // btnLogInUser
+            // 
+            this.btnLogInUser.Location = new System.Drawing.Point(12, 12);
+            this.btnLogInUser.Name = "btnLogInUser";
+            this.btnLogInUser.Size = new System.Drawing.Size(210, 85);
+            this.btnLogInUser.TabIndex = 0;
+            this.btnLogInUser.Text = "Log In";
+            this.btnLogInUser.UseVisualStyleBackColor = true;
+            this.btnLogInUser.Click += new System.EventHandler(this.btnLogInUser_Click);
+            // 
+            // LogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 450);
-            this.Name = "Form1";
+            this.ClientSize = new System.Drawing.Size(234, 109);
+            this.Controls.Add(this.btnLogInUser);
+            this.Name = "LogIn";
             this.Text = "Form1";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnLogInUser;
     }
 }
 
