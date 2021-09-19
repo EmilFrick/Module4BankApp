@@ -20,9 +20,15 @@ namespace Model4BankProject
 
         private void btnLogInUser_Click(object sender, EventArgs e)
         {
+            User user = new User(1);
+            AccountRepository openRepo = new AccountRepository();
+            openRepo.CreateUserPathway(user);
 
-            new AccountRepository();
-
+            Form currentForm = ActiveForm;
+            currentForm.Hide();
+            UserInterface userInterface = new UserInterface();
+            userInterface.Closed += (s, args) => currentForm.Close();
+            userInterface.Show();
         }
     }
 }

@@ -11,3 +11,4 @@ C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\BankApp\Model4Bank
 C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\BankApp\Model4BankProject\Model4BankProject\obj\Debug\Model4BankProject.csproj.CopyComplete
 C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\BankApp\Model4BankProject\Model4BankProject\obj\Debug\Model4BankProject.exe
 C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\BankApp\Model4BankProject\Model4BankProject\obj\Debug\Model4BankProject.pdb
+C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\BankApp\Model4BankProject\Model4BankProject\obj\Debug\Model4BankProject.UserInterface.resources

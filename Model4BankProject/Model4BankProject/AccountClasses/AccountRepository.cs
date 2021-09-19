@@ -13,26 +13,22 @@ namespace Model4BankProject.AccountClasses
     {
         public AccountRepository()
         {
-            UserAccountSearch();
+            
         }
 
-        public void UserAccountSearch()
+        public void CreateUserPathway(User user)
         {
-            User user1 = new User();
-            List<User> userDetails = user1.GetUsers();
-
-            int firstAccount = userDetails.ElementAt(0).UserAccounts[0].AccountNumber.AccNumber;  //dela upp i metod och gör detta mer Dry
-            int secondAccount = userDetails.ElementAt(0).UserAccounts[1].AccountNumber.AccNumber;
+            
+            int firstAccount = user.UserAccounts[0].AccountNumber.AccNumber;  //dela upp i metod och gör detta mer Dry
+            int secondAccount = user.UserAccounts[1].AccountNumber.AccNumber;
             
 
             string currentPath = Directory.GetCurrentDirectory();
-            bool directoryExist = Directory.Exists($@"{currentPath}\Users\{userDetails.ElementAt(0).UserName}");
+            bool directoryExist = Directory.Exists($@"{currentPath}\Users\{user.UserName}");
             if (!directoryExist)
             {
-
-                Directory.CreateDirectory($@"{currentPath}\Users\{userDetails.ElementAt(0).UserName}\{firstAccount}");
-                Directory.CreateDirectory($@"{currentPath}\Users\{userDetails.ElementAt(0).UserName}\{secondAccount}");
-
+                Directory.CreateDirectory($@"{currentPath}\Users\{user.UserName}\{firstAccount}");
+                Directory.CreateDirectory($@"{currentPath}\Users\{user.UserName}\{secondAccount}");
             }
         }
 

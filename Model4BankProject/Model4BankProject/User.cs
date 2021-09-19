@@ -11,36 +11,38 @@ namespace Model4BankProject
     {
         public string UserName { get; set; }
         public Account[] UserAccounts { get; set; }
-        List<User> users = new List<User>();
 
-
-        public User()
+        public User(int getUserByNumber)
         {
-            GenerateUsers();
+            GenerateUser(getUserByNumber);
         }
 
-        public User(string userName, Account[] userAccounts)
-        {
-            UserName = userName;
-            UserAccounts = userAccounts;
-        }
 
-        public List<User> GetUsers()
+        public void GenerateUser(int getUserByNumber)
         {
-            return users;
-        }
+            if (getUserByNumber == 1)
+            {
+                UserName = "User1";
+                AccountNumber user1Savings = new AccountNumber(9999, 1000001);
+                AccountNumber user1Personal = new AccountNumber(9999, 1000002);
+                SavingsAccount user1SavingsAccount = new SavingsAccount(user1Savings, 0);
+                PersonalAccount user1PersonalAccount = new PersonalAccount(user1Personal, 0);
+                UserAccounts = new Account[] { user1SavingsAccount, user1PersonalAccount };
+                
 
-        public void GenerateUsers()
-        {
-            string user1Name = "User1";
-            AccountNumber user1Savings = new AccountNumber(9999, 1000001);
-            AccountNumber user1Personal = new AccountNumber(9999, 1000002);
-            SavingsAccount user1SavingsAccount = new SavingsAccount(user1Savings, 0);
-            PersonalAccount user1PersonalAccount = new PersonalAccount(user1Personal, 0);
-            Account[] user1Accounts = new Account[] { user1SavingsAccount, user1PersonalAccount };
+            }
 
-            User user1 = new User(user1Name, user1Accounts);
-            users.Add(user1);
+            else if (getUserByNumber == 2)
+            {
+                UserName = "User2";
+                AccountNumber user1Savings = new AccountNumber(9999, 1000003);
+                AccountNumber user1Personal = new AccountNumber(9999, 1000004);
+                SavingsAccount user1SavingsAccount = new SavingsAccount(user1Savings, 0);
+                PersonalAccount user1PersonalAccount = new PersonalAccount(user1Personal, 0);
+                UserAccounts = new Account[] { user1SavingsAccount, user1PersonalAccount };
+                
+            }
+
         }
     }
 }
