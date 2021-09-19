@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Model4BankProject
+namespace Model4BankProject.Forms
 {
-    public partial class UserInterface : Form
+    public partial class NewTransaction : Form
     {
-        public UserInterface()
+        public NewTransaction()
         {
             InitializeComponent();
         }

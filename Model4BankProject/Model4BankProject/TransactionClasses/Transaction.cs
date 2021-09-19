@@ -14,13 +14,6 @@ namespace Model4BankProject.TransactionClasses
 
         public double Amount { get; set; }
 
-        private int myAge;
-
-        public int MyProperty
-        {
-            get { return myAge; }
-            set { myAge = value; }
-        }
 
     }
 }

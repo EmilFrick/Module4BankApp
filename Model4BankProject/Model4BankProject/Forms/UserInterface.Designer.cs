@@ -33,10 +33,10 @@ namespace Model4BankProject
             this.lblSum = new System.Windows.Forms.Label();
             this.rdbSavings = new System.Windows.Forms.RadioButton();
             this.rdbPersonal = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnNewTransaction = new System.Windows.Forms.Button();
+            this.btnWithdraw = new System.Windows.Forms.Button();
+            this.btnDeposit = new System.Windows.Forms.Button();
+            this.btnCalculateInterest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstTransactions
@@ -78,51 +78,52 @@ namespace Model4BankProject
             this.rdbPersonal.Text = "PersonKonto";
             this.rdbPersonal.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnNewTransaction
             // 
-            this.button1.Location = new System.Drawing.Point(234, 62);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Ny Transaktion";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnNewTransaction.Location = new System.Drawing.Point(234, 62);
+            this.btnNewTransaction.Name = "btnNewTransaction";
+            this.btnNewTransaction.Size = new System.Drawing.Size(115, 23);
+            this.btnNewTransaction.TabIndex = 5;
+            this.btnNewTransaction.Text = "Ny Transaktion";
+            this.btnNewTransaction.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnWithdraw
             // 
-            this.button2.Location = new System.Drawing.Point(234, 91);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Uttag";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnWithdraw.Location = new System.Drawing.Point(234, 91);
+            this.btnWithdraw.Name = "btnWithdraw";
+            this.btnWithdraw.Size = new System.Drawing.Size(115, 23);
+            this.btnWithdraw.TabIndex = 6;
+            this.btnWithdraw.Text = "Uttag";
+            this.btnWithdraw.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnDeposit
             // 
-            this.button3.Location = new System.Drawing.Point(234, 120);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(115, 23);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Insättning";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnDeposit.Location = new System.Drawing.Point(234, 120);
+            this.btnDeposit.Name = "btnDeposit";
+            this.btnDeposit.Size = new System.Drawing.Size(115, 23);
+            this.btnDeposit.TabIndex = 7;
+            this.btnDeposit.Text = "Insättning";
+            this.btnDeposit.UseVisualStyleBackColor = true;
+            this.btnDeposit.Click += new System.EventHandler(this.btnDeposit_Click);
             // 
-            // button4
+            // btnCalculateInterest
             // 
-            this.button4.Location = new System.Drawing.Point(234, 149);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(115, 23);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Beräkna Ränta";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnCalculateInterest.Location = new System.Drawing.Point(234, 149);
+            this.btnCalculateInterest.Name = "btnCalculateInterest";
+            this.btnCalculateInterest.Size = new System.Drawing.Size(115, 23);
+            this.btnCalculateInterest.TabIndex = 8;
+            this.btnCalculateInterest.Text = "Beräkna Ränta";
+            this.btnCalculateInterest.UseVisualStyleBackColor = true;
             // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(377, 206);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCalculateInterest);
+            this.Controls.Add(this.btnDeposit);
+            this.Controls.Add(this.btnWithdraw);
+            this.Controls.Add(this.btnNewTransaction);
             this.Controls.Add(this.rdbPersonal);
             this.Controls.Add(this.rdbSavings);
             this.Controls.Add(this.lblSum);
@@ -140,9 +141,9 @@ namespace Model4BankProject
         private System.Windows.Forms.Label lblSum;
         private System.Windows.Forms.RadioButton rdbSavings;
         private System.Windows.Forms.RadioButton rdbPersonal;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnNewTransaction;
+        private System.Windows.Forms.Button btnWithdraw;
+        private System.Windows.Forms.Button btnDeposit;
+        private System.Windows.Forms.Button btnCalculateInterest;
     }
 }
