@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Model4BankProject.AccountClasses;
+using Model4BankProject.Forms;
+using Model4BankProject.TransactionClasses;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,22 +15,58 @@ namespace Model4BankProject
 {
     public partial class UserInterface : Form
     {
-        public UserInterface()
+        private User _user { get; set; }
+        private int _activeAccountNumber { get; set; }
+        
+
+        public UserInterface(User user)
         {
             InitializeComponent();
+            _user = user;
+            _activeAccountNumber = _user.UserAccounts.ElementAt(0).AccountNumber.AccNumber;
+            PopulateListWithTransactions();
+
         }
 
         private void btnDeposit_Click(object sender, EventArgs e)
         {
-            //Ett fönster för Deposit
-            //Skicka värdet från fönster 2? 
-            //Knappen bekräfta insättning ska göra en Transaction och spara ned den på Personkontot via StreamWriter till Jsonfilen.
-            //If Statement implementeras för WithDraw och NewTransaction
-            //Skapa en listbox som hämter värdet till vilket konto insättningen görs till. "från kontot blir alltid 00"
-            //Deposit och Withdraw ska ha accountnumber 00
+            Deposit openDeposit = new Deposit(_user, _activeAccountNumber);
+            openDeposit.Show();
+        }
 
-            //Skapa insättning
+        private void PopulateListWithTransactions()
+        {
+            List<Transaction> transactionList = new List<Transaction>();
+            TransactionRepo openRepo = new TransactionRepo();
+            transactionList = openRepo.GenerateTransactionList(_user, _activeAccountNumber);
+            if (transactionList.Count == 0)
+            {
+                lstTransactions.Items.Add("No data available");
+            }
+            else
+            {
+                foreach (var t in transactionList)
+                {
+                    lstTransactions.Items.Add(t);
+                }
+            }
 
+        }
+
+        private void CheckChangedEvent(object sender, EventArgs e)
+        {
+            if (rdbSavings.Checked)
+            {
+                lstTransactions.Items.Clear();
+                _activeAccountNumber = _user.UserAccounts.ElementAt(0).AccountNumber.AccNumber;
+                PopulateListWithTransactions();
+            }
+            else if (rdbPersonal.Checked)
+            {
+                lstTransactions.Items.Clear();
+                _activeAccountNumber = _user.UserAccounts.ElementAt(1).AccountNumber.AccNumber;
+                PopulateListWithTransactions();
+            }
         }
     }
 }

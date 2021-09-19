@@ -11,6 +11,8 @@ namespace Model4BankProject.AccountClasses
         public int ClearingNumber { get; set; }
         public int AccNumber { get; set; }
 
+        
+
         public AccountNumber(int clearingNumber, int accNumber)
         {
             ClearingNumber = clearingNumber;

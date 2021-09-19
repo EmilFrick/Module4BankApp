@@ -26,7 +26,7 @@ namespace Model4BankProject
 
             Form currentForm = ActiveForm;
             currentForm.Hide();
-            UserInterface userInterface = new UserInterface();
+            UserInterface userInterface = new UserInterface(user);
             userInterface.Closed += (s, args) => currentForm.Close();
             userInterface.Show();
         }

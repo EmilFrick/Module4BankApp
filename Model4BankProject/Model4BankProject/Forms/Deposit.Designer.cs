@@ -29,80 +29,59 @@ namespace Model4BankProject.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.txtAmount = new System.Windows.Forms.TextBox();
+            this.lblToAccount = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCompleteDeposit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listBox1
+            // txtAmount
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(11, 137);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(258, 43);
-            this.listBox1.TabIndex = 0;
+            this.txtAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAmount.Location = new System.Drawing.Point(89, 75);
+            this.txtAmount.Name = "txtAmount";
+            this.txtAmount.Size = new System.Drawing.Size(180, 29);
+            this.txtAmount.TabIndex = 1;
             // 
-            // textBox1
+            // lblToAccount
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(89, 52);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(180, 29);
-            this.textBox1.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 24);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Ny Insättning";
+            this.lblToAccount.AutoSize = true;
+            this.lblToAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblToAccount.Location = new System.Drawing.Point(8, 9);
+            this.lblToAccount.Name = "lblToAccount";
+            this.lblToAccount.Size = new System.Drawing.Size(102, 20);
+            this.lblToAccount.TabIndex = 2;
+            this.lblToAccount.Text = "Ny Insättning";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(8, 52);
+            this.label2.Location = new System.Drawing.Point(8, 75);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 24);
             this.label2.TabIndex = 3;
             this.label2.Text = "Summa";
             // 
-            // label3
+            // btnCompleteDeposit
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(7, 101);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 24);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Välj Konto";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(59, 195);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(162, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Genomför Insättning";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCompleteDeposit.Location = new System.Drawing.Point(89, 110);
+            this.btnCompleteDeposit.Name = "btnCompleteDeposit";
+            this.btnCompleteDeposit.Size = new System.Drawing.Size(162, 23);
+            this.btnCompleteDeposit.TabIndex = 5;
+            this.btnCompleteDeposit.Text = "Genomför Insättning";
+            this.btnCompleteDeposit.UseVisualStyleBackColor = true;
+            this.btnCompleteDeposit.Click += new System.EventHandler(this.btnCompleteDeposit_Click);
             // 
             // Deposit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(281, 246);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(281, 193);
+            this.Controls.Add(this.btnCompleteDeposit);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.lblToAccount);
+            this.Controls.Add(this.txtAmount);
             this.Name = "Deposit";
             this.Text = "Deposit";
             this.ResumeLayout(false);
@@ -111,12 +90,9 @@ namespace Model4BankProject.Forms
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtAmount;
+        private System.Windows.Forms.Label lblToAccount;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCompleteDeposit;
     }
 }

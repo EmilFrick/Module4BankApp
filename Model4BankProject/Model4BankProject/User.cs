@@ -18,6 +18,20 @@ namespace Model4BankProject
         }
 
 
+        public static string GetCheatSheet(int account)
+        {
+            if (account == 1000001 || account == 1000002)
+            {
+                return "User1";
+            }
+            else
+            {
+                return "User2";
+            }
+        }
+
+
+
         public void GenerateUser(int getUserByNumber)
         {
             if (getUserByNumber == 1)
@@ -28,8 +42,6 @@ namespace Model4BankProject
                 SavingsAccount user1SavingsAccount = new SavingsAccount(user1Savings, 0);
                 PersonalAccount user1PersonalAccount = new PersonalAccount(user1Personal, 0);
                 UserAccounts = new Account[] { user1SavingsAccount, user1PersonalAccount };
-                
-
             }
 
             else if (getUserByNumber == 2)
@@ -40,9 +52,8 @@ namespace Model4BankProject
                 SavingsAccount user1SavingsAccount = new SavingsAccount(user1Savings, 0);
                 PersonalAccount user1PersonalAccount = new PersonalAccount(user1Personal, 0);
                 UserAccounts = new Account[] { user1SavingsAccount, user1PersonalAccount };
-                
             }
-
         }
+
     }
 }

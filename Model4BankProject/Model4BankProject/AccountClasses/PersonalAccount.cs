@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Model4BankProject.AccountClasses;
+using Model4BankProject.TransactionClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,11 +11,18 @@ namespace Model4BankProject
     public sealed class PersonalAccount : Account
     {
 
-        public PersonalAccount(AccountClasses.AccountNumber accountNumber, double balance)
+        public PersonalAccount(AccountNumber accountNumber, double balance)
         : base(accountNumber, balance)
         {
 
         }
+
+        public PersonalAccount(AccountNumber accountNumber)
+        : base(accountNumber)
+        {
+
+        }
+
 
         public override double CalculateInterest()
         {
@@ -22,7 +31,14 @@ namespace Model4BankProject
 
         public override void Deposit()
         {
-            //create a new transaction
+            //save the transaction to the accountfile
+        }
+
+        public void Deposit(Account account, double amount)
+        {
+            AccountNumber depositAccountNumber = new AccountNumber(0, 0);
+            Transaction transaction = new Transaction(account, depositAccountNumber, DateTime.Now, amount);
+
             //save the transaction to the accountfile
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model4BankProject.AccountClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,12 @@ namespace Model4BankProject
 
         }
 
+
+        public SavingsAccount(AccountNumber accountNumber)
+: base(accountNumber)
+        {
+
+        }
         public override double CalculateInterest()
         {
             throw new NotImplementedException();

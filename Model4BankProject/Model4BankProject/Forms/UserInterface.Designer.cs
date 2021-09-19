@@ -59,24 +59,26 @@ namespace Model4BankProject
             // rdbSavings
             // 
             this.rdbSavings.AutoSize = true;
-            this.rdbSavings.Location = new System.Drawing.Point(141, 39);
+            this.rdbSavings.Checked = true;
+            this.rdbSavings.Location = new System.Drawing.Point(12, 28);
             this.rdbSavings.Name = "rdbSavings";
             this.rdbSavings.Size = new System.Drawing.Size(75, 17);
             this.rdbSavings.TabIndex = 3;
+            this.rdbSavings.TabStop = true;
             this.rdbSavings.Text = "SparKonto";
             this.rdbSavings.UseVisualStyleBackColor = true;
+            this.rdbSavings.CheckedChanged += new System.EventHandler(this.CheckChangedEvent);
             // 
             // rdbPersonal
             // 
             this.rdbPersonal.AutoSize = true;
-            this.rdbPersonal.Checked = true;
-            this.rdbPersonal.Location = new System.Drawing.Point(12, 39);
+            this.rdbPersonal.Location = new System.Drawing.Point(133, 28);
             this.rdbPersonal.Name = "rdbPersonal";
             this.rdbPersonal.Size = new System.Drawing.Size(86, 17);
             this.rdbPersonal.TabIndex = 4;
-            this.rdbPersonal.TabStop = true;
             this.rdbPersonal.Text = "PersonKonto";
             this.rdbPersonal.UseVisualStyleBackColor = true;
+            this.rdbPersonal.CheckedChanged += new System.EventHandler(this.CheckChangedEvent);
             // 
             // btnNewTransaction
             // 
@@ -119,7 +121,7 @@ namespace Model4BankProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(377, 206);
+            this.ClientSize = new System.Drawing.Size(377, 215);
             this.Controls.Add(this.btnCalculateInterest);
             this.Controls.Add(this.btnDeposit);
             this.Controls.Add(this.btnWithdraw);

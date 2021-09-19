@@ -12,6 +12,11 @@ namespace Model4BankProject
         public AccountNumber AccountNumber { get; set; }
         public double Balance { get; set; }
 
+        protected Account(AccountNumber accountNumber)
+        {
+            AccountNumber = accountNumber;
+        }
+
         protected Account(AccountNumber accountNumber, double balance)
         {
             AccountNumber = accountNumber;
