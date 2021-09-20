@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,48 +19,32 @@ namespace Model4BankProject.Forms
         
         public User _user { get; set; }
 
+        public TransactionRepo _openRepo;
 
 
-        public Deposit(User _user, int accountnumber)
+
+        public Deposit(Account account, TransactionRepo openRepo)
         {
             InitializeComponent();
             
-            this._user = _user;
-            Set_acticeAccount(accountnumber);
-
-
-        }
-
-        private void Set_acticeAccount(int accountnumber)
-        {
-
-            foreach (var a in _user.UserAccounts)
-            {
-                if (accountnumber == a.AccountNumber.AccNumber)
-                {
-                    if (a is SavingsAccount)
-                    {
-                        SavingsAccount passThisAccount = new SavingsAccount(new AccountNumber(9999, accountnumber));
-                        _activeAccount = passThisAccount;
-                    }
-                    else
-                    {
-                        PersonalAccount passThisAccount = new PersonalAccount(new AccountNumber(9999, accountnumber));
-                        _activeAccount = passThisAccount;
-                    }
-                }
-            }
-            
+            _user = _user;
+            _openRepo = openRepo;
+            _activeAccount = account;
         }
 
         private void btnCompleteDeposit_Click(object sender, EventArgs e)
         {
-            if (double.TryParse(txtAmount.Text, out double amount))
+            if (_activeAccount is SavingsAccount)
+{
+                SavingsAccount savingsAccount = new SavingsAccount(_user,_activeAccount, _activeAccount.AccountNumber, _openRepo);
+                savingsAccount.Deposit(double.Parse(txtAmount.Text));
+
+            }
+            
+            
+            else if (_activeAccount is PersonalAccount)
             {
-            TransactionRepo openRepo = new TransactionRepo();
-            Transaction createTransaction = new Transaction();
-            createTransaction.CreateTransactionDepositWithdraw(_activeAccount,amount);
-            openRepo.AddTransactionToUserAccount(createTransaction);
+
             }
         }
     }

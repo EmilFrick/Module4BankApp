@@ -29,7 +29,7 @@ namespace Model4BankProject
             throw new NotImplementedException();
         }
 
-        public override void Deposit()
+        public override void Deposit(double depositAmount)
         {
             //save the transaction to the accountfile
         }
@@ -49,13 +49,22 @@ namespace Model4BankProject
 
         }
 
-        public override void Withdraw()
+        public override void Withdraw(double withdrawAmount)
         {
             //Read the account file
             //Conditional: Implement that withdrawals can be madee up to a defecit of 2000 SEK. 
             //If OK then procceed with the withdrawal
             //Create a new transaction
             //file the transaction in the account file
+        }
+
+        public override bool MinimumAmountCondition(double balance)
+        {
+            if (balance<2000)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

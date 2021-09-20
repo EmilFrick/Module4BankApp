@@ -20,7 +20,7 @@ namespace Model4BankProject
         protected Account(AccountNumber accountNumber, double balance)
         {
             AccountNumber = accountNumber;
-            Balance = balance; //Create a balance calculator from file
+            Balance = balance;
         }
 
 
@@ -33,9 +33,11 @@ namespace Model4BankProject
         //This should simulate the same process as for any other user, fetching and assigning values accordingly. 
 
 
-        abstract public void Withdraw();
-        abstract public void Deposit();
+        abstract public void Withdraw(double balance);
+        abstract public void Deposit(double depositAmount);
         abstract public void ShowTransactionHistory();
         abstract public double CalculateInterest();
+        abstract public bool MinimumAmountCondition(double balance);
+
     }
 }

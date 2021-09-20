@@ -32,6 +32,7 @@ namespace Model4BankProject.AccountClasses
             }
         }
 
+
     }
 
     // Current>MappMedAnvändare - om användare inte finns, skapa mapp för användaren.

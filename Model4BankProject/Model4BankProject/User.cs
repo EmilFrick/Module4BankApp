@@ -39,8 +39,8 @@ namespace Model4BankProject
                 UserName = "User1";
                 AccountNumber user1Savings = new AccountNumber(9999, 1000001);
                 AccountNumber user1Personal = new AccountNumber(9999, 1000002);
-                SavingsAccount user1SavingsAccount = new SavingsAccount(user1Savings, 0);
-                PersonalAccount user1PersonalAccount = new PersonalAccount(user1Personal, 0);
+                SavingsAccount user1SavingsAccount = new SavingsAccount(user1Savings);
+                PersonalAccount user1PersonalAccount = new PersonalAccount(user1Personal);
                 UserAccounts = new Account[] { user1SavingsAccount, user1PersonalAccount };
             }
 
@@ -49,8 +49,8 @@ namespace Model4BankProject
                 UserName = "User2";
                 AccountNumber user1Savings = new AccountNumber(9999, 1000003);
                 AccountNumber user1Personal = new AccountNumber(9999, 1000004);
-                SavingsAccount user1SavingsAccount = new SavingsAccount(user1Savings, 0);
-                PersonalAccount user1PersonalAccount = new PersonalAccount(user1Personal, 0);
+                SavingsAccount user1SavingsAccount = new SavingsAccount(user1Savings);
+                PersonalAccount user1PersonalAccount = new PersonalAccount(user1Personal);
                 UserAccounts = new Account[] { user1SavingsAccount, user1PersonalAccount };
             }
         }

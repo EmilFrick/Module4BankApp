@@ -16,29 +16,32 @@ namespace Model4BankProject
     public partial class UserInterface : Form
     {
         private User _user { get; set; }
-        private int _activeAccountNumber { get; set; }
-        
+        private Account _activeAccount { get; set; }
+        private double _accountBalance { get; set; }
+        private TransactionRepo _openRepo { get; set; }
+
+
 
         public UserInterface(User user)
         {
             InitializeComponent();
             _user = user;
-            _activeAccountNumber = _user.UserAccounts.ElementAt(0).AccountNumber.AccNumber;
-            PopulateListWithTransactions();
-
+            _openRepo = new TransactionRepo();
+            _openRepo.IsPathwayAvailable(_user, _user.UserAccounts.ElementAt(0).AccountNumber.AccNumber);
+            _openRepo.IsPathwayAvailable(_user, _user.UserAccounts.ElementAt(1).AccountNumber.AccNumber);
+            SetActiveAccount(0);
+            SetlstBoxAndBalance();
         }
 
         private void btnDeposit_Click(object sender, EventArgs e)
         {
-            Deposit openDeposit = new Deposit(_user, _activeAccountNumber);
+            Deposit openDeposit = new Deposit(_activeAccount, _openRepo);
             openDeposit.Show();
         }
 
-        private void PopulateListWithTransactions()
+        private void PopulateListWithTransactions(List<Transaction> transactionList)
         {
-            List<Transaction> transactionList = new List<Transaction>();
-            TransactionRepo openRepo = new TransactionRepo();
-            transactionList = openRepo.GenerateTransactionList(_user, _activeAccountNumber);
+            transactionList = _openRepo.GenerateTransactionList(_user, _activeAccount.AccountNumber.AccNumber);
             if (transactionList.Count == 0)
             {
                 lstTransactions.Items.Add("No data available");
@@ -50,23 +53,36 @@ namespace Model4BankProject
                     lstTransactions.Items.Add(t);
                 }
             }
-
         }
 
         private void CheckChangedEvent(object sender, EventArgs e)
         {
             if (rdbSavings.Checked)
             {
-                lstTransactions.Items.Clear();
-                _activeAccountNumber = _user.UserAccounts.ElementAt(0).AccountNumber.AccNumber;
-                PopulateListWithTransactions();
+                SetActiveAccount(0);
+                SetlstBoxAndBalance();
             }
             else if (rdbPersonal.Checked)
             {
-                lstTransactions.Items.Clear();
-                _activeAccountNumber = _user.UserAccounts.ElementAt(1).AccountNumber.AccNumber;
-                PopulateListWithTransactions();
+                SetActiveAccount(1);
+                SetlstBoxAndBalance();
             }
         }
+
+
+        private void SetActiveAccount(int a)
+        {
+            AccountNumber accountNumber = new AccountNumber(_user.UserAccounts.ElementAt(a).AccountNumber.ClearingNumber, _user.UserAccounts.ElementAt(a).AccountNumber.AccNumber);
+            _activeAccount = new SavingsAccount(accountNumber);
+        }
+        private void SetlstBoxAndBalance()
+        {
+            lstTransactions.Items.Clear();
+            List<Transaction> accountRecords = _openRepo.GenerateTransactionList(_user, _activeAccount.AccountNumber.AccNumber);
+            PopulateListWithTransactions(accountRecords);
+            _accountBalance = _openRepo.GetBalance(accountRecords);
+            lblSum.Text = _accountBalance.ToString();
+        }
+    
     }
 }
