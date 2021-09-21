@@ -34,7 +34,7 @@ namespace Model4BankProject
             //save the transaction to the accountfile
         }
 
-        public void Deposit(Account account, double amount)
+        public void Deposit(PersonalAccount account, double amount)
         {
             AccountNumber depositAccountNumber = new AccountNumber(0, 0);
             Transaction transaction = new Transaction(account, depositAccountNumber, DateTime.Now, amount);

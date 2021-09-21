@@ -17,6 +17,8 @@ namespace Model4BankProject
     {
         private User _user { get; set; }
         private Account _activeAccount { get; set; }
+        private SavingsAccount _activeSavingsAccount { get; set; }
+        private PersonalAccount _activePersonalAccount { get; set; }
         private double _accountBalance { get; set; }
         private TransactionRepo _openRepo { get; set; }
 
@@ -33,28 +35,8 @@ namespace Model4BankProject
             SetlstBoxAndBalance();
         }
 
-        private void btnDeposit_Click(object sender, EventArgs e)
-        {
-            Deposit openDeposit = new Deposit(_activeAccount, _openRepo);
-            openDeposit.Show();
-        }
 
-        private void PopulateListWithTransactions(List<Transaction> transactionList)
-        {
-            transactionList = _openRepo.GenerateTransactionList(_user, _activeAccount.AccountNumber.AccNumber);
-            if (transactionList.Count == 0)
-            {
-                lstTransactions.Items.Add("No data available");
-            }
-            else
-            {
-                foreach (var t in transactionList)
-                {
-                    lstTransactions.Items.Add(t);
-                }
-            }
-        }
-
+        #region Eventbased Methods
         private void CheckChangedEvent(object sender, EventArgs e)
         {
             if (rdbSavings.Checked)
@@ -69,11 +51,53 @@ namespace Model4BankProject
             }
         }
 
+        private void btnDeposit_Click(object sender, EventArgs e)
+        {
+            if (_activeAccount is SavingsAccount)
+            {
+                Deposit openDeposit = new Deposit(_activeSavingsAccount, _accountBalance, _openRepo);
+                openDeposit.Show();
+            }
+            else if (_activePersonalAccount is PersonalAccount)
+            {
+                Deposit openDeposit = new Deposit(_activePersonalAccount, _accountBalance, _openRepo);
+                openDeposit.Show();
+            }
+        }
+
+
+
+        #endregion
+
+        #region Processes for UserInterFace
+        private void PopulateListWithTransactions(List<Transaction> transactionList)
+        {   
+            if (transactionList.Count == 0)
+            {
+                lstTransactions.Items.Add("No data available");
+            }
+            else
+            {
+                foreach (var t in transactionList)
+                {
+                    lstTransactions.Items.Add(t);
+                }
+            }
+        }
 
         private void SetActiveAccount(int a)
         {
             AccountNumber accountNumber = new AccountNumber(_user.UserAccounts.ElementAt(a).AccountNumber.ClearingNumber, _user.UserAccounts.ElementAt(a).AccountNumber.AccNumber);
-            _activeAccount = new SavingsAccount(accountNumber);
+            if (accountNumber.AccNumber % 2 == 1)
+            {
+                _activeAccount = new SavingsAccount(accountNumber);
+                _activeSavingsAccount = new SavingsAccount(accountNumber);
+            }
+            else if (accountNumber.AccNumber % 2 == 0)
+            {
+                _activeAccount = new PersonalAccount(accountNumber);
+                _activePersonalAccount = new PersonalAccount(accountNumber);
+            }
         }
         private void SetlstBoxAndBalance()
         {
@@ -83,6 +107,7 @@ namespace Model4BankProject
             _accountBalance = _openRepo.GetBalance(accountRecords);
             lblSum.Text = _accountBalance.ToString();
         }
-    
+
+        #endregion
     }
 }

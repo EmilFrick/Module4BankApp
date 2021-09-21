@@ -16,29 +16,44 @@ namespace Model4BankProject.Forms
     public partial class Deposit : Form
     {
         public Account _activeAccount { get; set; }
-        
-        public User _user { get; set; }
+        public SavingsAccount _activeSavingsAccount { get; set; }
+        public PersonalAccount _activePersonalAccount { get; set; }
+
+    public User _user { get; set; }
+
+        public double _activeBalance { get; set; }
 
         public TransactionRepo _openRepo;
 
 
-
-        public Deposit(Account account, TransactionRepo openRepo)
+        //SavingsAccount Ctor
+        public Deposit(SavingsAccount account, double balance,TransactionRepo openRepo)
         {
             InitializeComponent();
-            
             _user = _user;
-            _openRepo = openRepo;
+            _activeSavingsAccount = account;
             _activeAccount = account;
+            _activeBalance = balance;
+            _openRepo = openRepo;
+        }
+
+        //PersonalAccount Ctor
+        public Deposit(PersonalAccount account, double balance, TransactionRepo openRepo)
+        {
+            InitializeComponent();
+            _user = _user;
+            _activePersonalAccount = account;
+            _activeAccount = account;
+            _activeBalance = balance;
+            _openRepo = openRepo;
         }
 
         private void btnCompleteDeposit_Click(object sender, EventArgs e)
         {
-            if (_activeAccount is SavingsAccount)
+            if (_activeAccount is SavingsAccount sAccount)
 {
-                SavingsAccount savingsAccount = new SavingsAccount(_user,_activeAccount, _activeAccount.AccountNumber, _openRepo);
+                SavingsAccount savingsAccount = new SavingsAccount(_user,sAccount, sAccount.AccountNumber, _openRepo);
                 savingsAccount.Deposit(double.Parse(txtAmount.Text));
-
             }
             
             

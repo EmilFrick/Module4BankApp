@@ -19,7 +19,7 @@ namespace Model4BankProject
 
 
         #region fields
-        private Account _userAccount { get; set; }
+        private SavingsAccount _userAccount { get; set; }
         private User _user { get; set; }
         private TransactionRepo _openRepo { get; set; }
         #endregion
@@ -33,7 +33,7 @@ namespace Model4BankProject
         }
 
         //Constructor when accessing the functionalities Withdraw, Deposit and Custom Transaction.
-        public SavingsAccount(User user, Account account, AccountNumber accountNumber, TransactionRepo openRepo)     
+        public SavingsAccount(User user, SavingsAccount account, AccountNumber accountNumber, TransactionRepo openRepo)     
             : base(accountNumber)                                                                   
         {
             _user = user;
@@ -42,7 +42,7 @@ namespace Model4BankProject
         }
 
         //Constructor for setting up a transaction.
-        public SavingsAccount(User user, Account account, AccountNumber accountNumber, TransactionRepo openRepo, double balance, bool withdraw)
+        public SavingsAccount(User user, SavingsAccount account, AccountNumber accountNumber, TransactionRepo openRepo, double balance, bool withdraw)
         : base(accountNumber, balance)
         {
             _user = user;
@@ -56,8 +56,9 @@ namespace Model4BankProject
         #region Main Functionality
         public override void Deposit(double depositAmount)
 {
-            Transaction transaction = new Transaction();
             _userAccount = new SavingsAccount(_user, _userAccount, _userAccount.AccountNumber, _openRepo, _accountBalance, false);
+            
+            Transaction transaction = new Transaction();
             transaction = transaction.CreateTransactionDepositWithdraw(_userAccount, depositAmount);
             _openRepo.AddTransactionToUserAccount(transaction);
         }
@@ -67,8 +68,9 @@ namespace Model4BankProject
 
             if (MinimumAmountCondition(withdrawAmount) && ValidYearlyWithdrawals())
             {
-                Transaction transaction = new Transaction();
                 _userAccount = new SavingsAccount(_user, _userAccount, _userAccount.AccountNumber, _openRepo, _accountBalance, true);
+                
+                Transaction transaction = new Transaction();
                 transaction = transaction.CreateTransactionDepositWithdraw(_userAccount, withdrawAmount);
                 _openRepo.AddTransactionToUserAccount(transaction);
             }
@@ -97,20 +99,18 @@ namespace Model4BankProject
 
 
         #region Condition Methods
-        private bool ValidYearlyWithdrawals()          //Not fully developed.
+        private bool ValidYearlyWithdrawals()
         {
             int returnsAmountOfTimes = 0;
             List<Transaction> savingRecords = _openRepo.GenerateTransactionList(_user, _userAccount.AccountNumber.AccNumber);
             foreach (var t in savingRecords)
             {
-                if (t.AccountInformation is SavingsAccount account)
+                if (t.SavingsAccountInformation.WithdrawValue)
                 {
-                    if (account.WithdrawValue)
-                    {
-                        returnsAmountOfTimes++;
-                    }
+                        returnsAmountOfTimes++;   
                 }
             }
+
             if (returnsAmountOfTimes<5)
             {
                 return true;

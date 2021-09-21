@@ -24,8 +24,8 @@ namespace Model4BankProject.TransactionClasses
 
         public string GeneratePathway(Transaction transaction)
         {
-            string userAccount = transaction.AccountInformation.AccountNumber.AccNumber.ToString();
-            string userName = User.GetCheatSheet(transaction.AccountInformation.AccountNumber.AccNumber);
+            string userAccount = transaction.UserAccountNumber.AccNumber.ToString();
+            string userName = User.GetCheatSheet(transaction.UserAccountNumber.AccNumber);
             return $@"Users\{userName}\{userAccount}";
         }
 
@@ -39,20 +39,27 @@ namespace Model4BankProject.TransactionClasses
         internal void IsPathwayAvailable(User user, int accountNumber)
         {
             string pathway = GeneratePathway(user, accountNumber);
-            if (!File.Exists(pathway))
+            bool fileExist = File.Exists($@"{pathway}\{accountNumber}.txt");
+
+            if (fileExist == false)
             {
-                FileStream myfile = File.Create($@"{pathway}\{accountNumber}.json");
+                FileStream myfile = File.Create($@"{pathway}\{accountNumber}.txt");
                 myfile.Close();
             }
         }
         #endregion
 
 
-        public void AddTransactionToUserAccount(Transaction transaction) //Använd transaction med Account\balance
+        public void AddTransactionToUserAccount(Transaction transaction)
         {
             string pathway = GeneratePathway(transaction);
-            string jsonString = JsonConvert.SerializeObject(transaction);
-            File.AppendAllText(pathway, jsonString + "\n");
+            string txtString = $"{transaction.PlaceHolder.AccountNumber.AccNumber}," +
+                               $"{transaction.TransactionDate}," +
+                               $"{transaction.AccountAntagonist.AccNumber}," +
+                               $"{transaction.Amount}," +
+                               $"{transaction.PlaceHolder.Balance}" +
+                               $"{transaction.PlaceHolder.}";
+            File.AppendAllText($@"{pathway}\{transaction.UserAccountNumber.AccNumber}.txt", txtString + "\n");
         }
 
         public List<Transaction> GenerateTransactionList(User user, int accountNumber)
@@ -63,7 +70,6 @@ namespace Model4BankProject.TransactionClasses
 
         public List<Transaction> GetDataFromJsonFile(string pathway, int accountNumber)
         {
-            listOfTransactions.Clear();
             StreamReader reader = new StreamReader($@"{pathway}\{accountNumber}.json");
 
             string jsonString = "";
@@ -77,20 +83,28 @@ namespace Model4BankProject.TransactionClasses
             }
             return listOfTransactions;
         }
+
+
         public double GetBalance(List<Transaction> listOfTransactions)
         {
-            double balance;
-            if (listOfTransactions.Count!=0)
+            double balance = 0;
+            if (listOfTransactions.Count != 0)
             {
                 int lastElement = (listOfTransactions.Count() - 1);
                 Transaction transaction = listOfTransactions.ElementAt(lastElement);
-                balance = transaction.AccountInformation.Balance;
+                if (transaction.PlaceHolder is SavingsAccount)
+                {
+                    balance = transaction.SavingsAccountInformation.Balance;
+                }
+                else if (transaction.PlaceHolder is PersonalAccount)
+                {
+                    balance = transaction.PersonalAccountInformation.Balance;
+                }
                 return balance;
+
             }
-            else
-            {
-                return 0;
-            }
+            return 0;
+
         }
 
     }
